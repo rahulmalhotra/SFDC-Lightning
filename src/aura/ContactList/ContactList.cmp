@@ -1,21 +1,30 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="ContactListController" access="global" >
+    <!-- Handler to call function when page is loaded initially -->
     <aura:handler name="init" action="{!c.getContactsList}" value="{!this}" />
+    <!-- List of contacts stored in attribute -->
     <aura:attribute name="contactList" type="List" />
+    <!-- Lightning card to show contacts -->
 	<lightning:card title="Contacts">
+        <!-- Body of lightning card starts here -->
         <p class="slds-p-horizontal_small">
-        <!-- apex repeat -->
+            <!-- Aura iteration to iterate list, similar to apex:repeat -->
             <aura:iteration items="{!v.contactList}" var="contact">
+                <!-- recordViewForm to view the record -->
                 <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
                     <div class="slds-box slds-theme_default">
+                        <!-- outputfield used to output the record field data inside recordViewForm -->
                         <lightning:outputField fieldName="Name" />
                         <lightning:outputField fieldName="Email" />
                         <lightning:outputField fieldName="Phone" />
                     </div>
                 </lightning:recordViewForm>
+                <!-- Line break between two records -->
                 <br />
             </aura:iteration>
         </p>
+        <!-- Lightning card actions -->
         <aura:set attribute="actions">
+            <!-- New button added -->
             <lightning:button label="New" onclick="{!c.newContact}" />
         </aura:set>
     </lightning:card>
