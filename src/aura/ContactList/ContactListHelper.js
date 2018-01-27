@@ -17,13 +17,13 @@
             if(state === 'SUCCESS') {
                 // Getting the list of contacts from response and storing in js variable
                 var contactList = response.getReturnValue();
+                // Set the list attribute in component with the value returned by function
+                component.set("v.contactList",contactList);
             }
             else {
                 // Show an alert if the state is incomplete or error
                 alert('Error in getting data');
             }
-            // Set the list attribute in component with the value returned by function
-            component.set("v.contactList",contactList);
         });
         // Adding the action variable to the global action queue
         $A.enqueueAction(action);
