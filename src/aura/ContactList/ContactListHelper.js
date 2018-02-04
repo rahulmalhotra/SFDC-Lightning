@@ -65,7 +65,7 @@
                         'title': 'Success!',
                         'type': 'success',
                         'mode': 'dismissable',
-                        'message': 'Contacts saved successfully.'
+                        'message': 'Contacts updated successfully.'
                     });
                     // Fire success toast event ( Show toast )
                     toastEvent.fire();            
