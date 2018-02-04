@@ -8,24 +8,42 @@
         <!-- Body of lightning card starts here -->
         <p class="slds-p-horizontal_small">
             <!-- Aura iteration to iterate list, similar to apex:repeat -->
-            <aura:iteration items="{!v.contactList}" var="contact">
-                <!-- recordViewForm to view the record -->
-                <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
+            <div aura:id="recordViewForm">
+                <aura:iteration items="{!v.contactList}" var="contact">
+                    <!-- recordViewForm to view the record -->
+                    <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
+                        <div class="slds-box slds-theme_default">
+                            <!-- outputfield used to output the record field data inside recordViewForm -->
+                            <lightning:outputField fieldName="FirstName" />
+                            <lightning:outputField fieldName="LastName" />
+                            <lightning:outputField fieldName="Email" />
+                            <lightning:outputField fieldName="Phone" />
+                        </div>
+                    </lightning:recordViewForm>
+                    <!-- Line break between two records -->
+                    <br />
+                </aura:iteration>
+            </div>
+            <div aura:id="recordEditForm" class="formHide">
+                <aura:iteration items="{!v.contactList}" var="contact">
                     <div class="slds-box slds-theme_default">
-                        <!-- outputfield used to output the record field data inside recordViewForm -->
-                        <lightning:outputField fieldName="Name" />
-                        <lightning:outputField fieldName="Email" />
-                        <lightning:outputField fieldName="Phone" />
+                        <!-- inputfield used to update the record field data -->
+                        <lightning:input value="{!contact.FirstName}" />
+                        <lightning:input value="{!contact.LastName}" />
+                        <lightning:input type="email" value="{!contact.Email}" />
+                        <lightning:input type="tel" value="{!contact.Phone}" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" />
                     </div>
-                </lightning:recordViewForm>
-                <!-- Line break between two records -->
-                <br />
-            </aura:iteration>
+                    <br />
+                    <!-- Line break between two records -->
+                </aura:iteration>
+            </div>
         </p>
         <!-- Lightning card actions -->
         <aura:set attribute="actions">
             <!-- New button added -->
             <lightning:button label="New" onclick="{!c.newContact}" />
+            <!-- Edit/Save button added -->
+            <lightning:button variant="brand" label="Edit" name="edit" onclick="{!c.editContacts}" />
         </aura:set>
     </lightning:card>
 </aura:component>
