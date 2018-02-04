@@ -19,7 +19,7 @@ public class ContactListController {
             update contactList;
             // Setting the success status and message in resultMap
             resultMap.put('status', 'success');
-	        resultMap.put('message', 'Data Saved Successfully');        
+	        resultMap.put('message', 'Contacts Updated Successfully');        
     	}
     	catch(Exception e) {
             // Setting the success status and message in resultMap

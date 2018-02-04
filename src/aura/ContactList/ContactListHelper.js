@@ -32,7 +32,7 @@
     // Function to update the contacts on server
     saveContacts: function(component, event, helper) {
         // Getting the contact list from lightning component
-        var contactList = component.get("v.contactList",contactList);
+        var contactList = component.get("v.contactList");
         // Getting the recordViewForm and recordEditForm component
         var recordViewForm = component.find('recordViewForm');
         var recordEditForm = component.find('recordEditForm'); 
@@ -65,7 +65,7 @@
                         'title': 'Success!',
                         'type': 'success',
                         'mode': 'dismissable',
-                        'message': 'Contacts updated successfully.'
+                        'message': dataMap.message
                     });
                     // Fire success toast event ( Show toast )
                     toastEvent.fire();            
@@ -77,7 +77,7 @@
                         'title': 'Error!',
                         'type': 'error',
                         'mode': 'dismissable',
-                        'message': 'There is an error updating the contacts.'
+                        'message': dataMap.message
                     });
                     // Fire error toast event ( Show toast )
                     toastEvent.fire();                
