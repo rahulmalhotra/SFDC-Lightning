@@ -74,7 +74,7 @@
                 else if(dataMap.status=='error') {
                     // Setting the error toast which is dismissable ( vanish on timeout or on clicking X button )
                     toastEvent.setParams({
-                        'title': 'Success!',
+                        'title': 'Error!',
                         'type': 'error',
                         'mode': 'dismissable',
                         'message': 'There is an error updating the contacts.'
