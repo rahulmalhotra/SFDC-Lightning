@@ -22,11 +22,34 @@ public class ContactListController {
 	        resultMap.put('message', 'Contacts Updated Successfully');        
     	}
     	catch(Exception e) {
-            // Setting the success status and message in resultMap
+            // Setting the error status and message in resultMap
             resultMap.put('status', 'error');
 			resultMap.put('message',e.getMessage());
     	}
     	// Returning the result string map
         return resultMap;
+    }
+    
+    @AuraEnabled
+    public static Map<String,String> deleteContactList(List<Id> contactIds) {
+        //Fetching Contacts
+        List<Contact> contactsToDelete = [SELECT Id FROM Contact WHERE Id in :contactIds];
+        // Forming a  string map to return response
+        Map<String,String> resultMap = new Map<String,String>();
+        // Adding try catch for exception handling
+        try {
+        	// Deleting the Contacts
+            delete contactsToDelete;
+            // Setting the success status and message in resultMap
+            resultMap.put('status', 'success');
+	        resultMap.put('message', 'Contacts Deleted Successfully');        
+    	}
+    	catch(Exception e) {
+            // Setting the error status and message in resultMap
+            resultMap.put('status', 'error');
+			resultMap.put('message',e.getMessage());
+    	}
+    	// Returning the result string map
+        return resultMap;                
     }
 }

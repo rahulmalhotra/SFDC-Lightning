@@ -42,5 +42,11 @@
             // Calling saveContacts if the button is save
             helper.saveContacts(component, event, helper);
         }
+    },
+    
+    // Function used to delete the contacts
+    deleteContacts: function(component, event, helper) {
+        // Calling removeContacts Helper Function
+        helper.removeContacts(component, event, helper);
     }
 })

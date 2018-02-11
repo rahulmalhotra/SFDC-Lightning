@@ -13,6 +13,9 @@
                     <!-- recordViewForm to view the record -->
                     <lightning:recordViewForm recordId="{!contact.Id}" objectApiName="Contact">
                         <div class="slds-box slds-theme_default">
+	                        <!-- inputfield checkbox used to check wether to delete the contact or not -->                            
+	                        <lightning:input type="checkbox" value="{!contact.Id}" label="Mark for Deletion" aura:id="deleteContact" />
+                            <br />
                             <!-- outputfield used to output the record field data inside recordViewForm -->
                             <lightning:outputField fieldName="FirstName" />
                             <lightning:outputField fieldName="LastName" />
@@ -40,6 +43,8 @@
         </p>
         <!-- Lightning card actions -->
         <aura:set attribute="actions">
+            <!-- Delete button added -->
+            <lightning:button variant="destructive" label="Delete" onclick="{!c.deleteContacts}" />
             <!-- New button added -->
             <lightning:button label="New" onclick="{!c.newContact}" />
             <!-- Edit/Save button added -->
