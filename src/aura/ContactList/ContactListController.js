@@ -50,6 +50,7 @@
         helper.removeContacts(component, event, helper);
     },
 
+    // Function used to open the contact modal
     openModal: function(component, event, helper) {
         var modal = component.find("contactModal");
         var modalBackdrop = component.find("contactModalBackdrop");
@@ -57,12 +58,15 @@
         $A.util.addClass(modalBackdrop,"slds-backdrop_open");
     },
 
+    // Function used to close the contact modal
     closeModal: function(component, event, helper) {
         var modal = component.find("contactModal");
         var modalBackdrop = component.find("contactModalBackdrop");
         $A.util.removeClass(modal,"slds-fade-in-open");
         $A.util.removeClass(modalBackdrop,"slds-backdrop_open");
     },
+
+    // Function used to create new contact
     createContact: function(component, event, helper) {
         helper.insertContact(component, event, helper);
     }
