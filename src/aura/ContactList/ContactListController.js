@@ -48,5 +48,22 @@
     deleteContacts: function(component, event, helper) {
         // Calling removeContacts Helper Function
         helper.removeContacts(component, event, helper);
+    },
+
+    openModal: function(component, event, helper) {
+        var modal = component.find("contactModal");
+        var modalBackdrop = component.find("contactModalBackdrop");
+        $A.util.addClass(modal,"slds-fade-in-open");
+        $A.util.addClass(modalBackdrop,"slds-backdrop_open");
+    },
+
+    closeModal: function(component, event, helper) {
+        var modal = component.find("contactModal");
+        var modalBackdrop = component.find("contactModalBackdrop");
+        $A.util.removeClass(modal,"slds-fade-in-open");
+        $A.util.removeClass(modalBackdrop,"slds-backdrop_open");
+    },
+    createContact: function(component, event, helper) {
+        helper.insertContact(component, event, helper);
     }
 })
