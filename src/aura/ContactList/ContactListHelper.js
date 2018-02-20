@@ -174,7 +174,6 @@
         });
         createAction.setCallback(this, function(response) {           
             // Getting the state from response
-            console.log(JSON.stringify(response));
             var state = response.getState();
             if(state === 'SUCCESS') {
                 // Getting the response from server
