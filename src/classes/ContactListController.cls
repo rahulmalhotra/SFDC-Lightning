@@ -54,7 +54,7 @@ public class ContactListController {
     }
 
     @AuraEnabled
-    public static Map<String, String> createContactList(Contact newContact) {
+    public static Map<String, String> createContactRecord(Contact newContact) {
         // Forming a  string map to return response
         Map<String,String> resultMap = new Map<String,String>();
         // Adding try catch for exception handling

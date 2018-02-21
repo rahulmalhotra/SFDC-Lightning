@@ -168,7 +168,7 @@
         contact.AccountId = component.get('v.recordId');
         // Initializing the toast event to show toast
         var toastEvent = $A.get('e.force:showToast');
-        var createAction = component.get('c.createContactList');
+        var createAction = component.get('c.createContactRecord');
         createAction.setParams({
             newContact: contact
         });
