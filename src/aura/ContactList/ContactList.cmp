@@ -1,8 +1,6 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="ContactListController" access="global">
     <!-- Handler to call function when page is loaded initially -->
     <aura:handler name="init" action="{!c.getContactsList}" value="{!this}" />
-    <!-- Handler to capture save Contact Event -->
-    <aura:handler event="c:contactEvent" action="{!c.createContactList}" />
     <!-- List of contacts stored in attribute -->
     <aura:attribute name="contactList" type="List" />
     <!-- New Contact Object -->
