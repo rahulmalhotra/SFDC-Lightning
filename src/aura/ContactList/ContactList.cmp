@@ -42,8 +42,8 @@
                     <div class="slds-box slds-theme_default">
                         <!-- inputfield used to update the record field data -->
                         <lightning:input value="{!contact.FirstName}" />
-                        <lightning:input value="{!contact.LastName}" />
-                        <lightning:input type="email" value="{!contact.Email}" />
+                        <lightning:input aura:id="fieldToValidate" value="{!contact.LastName}" messageWhenValueMissing="Contact's Last Name is Mandatory" required="true"/>
+                        <lightning:input aura:id="fieldToValidate" type="email" value="{!contact.Email}" />
                         <lightning:input type="tel" value="{!contact.Phone}" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" />
                     </div>
                     <br />
@@ -75,10 +75,10 @@
                 </header>
                 <!-- Modal Body ( consists of form ) -->
                 <div class="slds-modal__content slds-p-around_medium" id="contactModalBody">
-                    <lightning:input label="First Name" value="{!v.contact.FirstName}" />
-                    <lightning:input label="Last Name" required="true" value="{!v.contact.LastName}" />
-                    <lightning:input label="Email" value="{!v.contact.Email}" />
-                    <lightning:input label="Phone" value="{!v.contact.Phone}" />
+                    <lightning:input aura:id="formFieldToValidate" label="First Name" messageWhenValueMissing="Contact's First Name is Mandatory" required="true" value="{!v.contact.FirstName}" />
+                    <lightning:input aura:id="formFieldToValidate" label="Last Name" messageWhenValueMissing="Contacts's Last Name is Mandatory" required="true" value="{!v.contact.LastName}" />
+                    <lightning:input aura:id="formFieldToValidate" label="Email" name="emailField" value="{!v.contact.Email}" />
+                    <lightning:input aura:id="formFieldToValidate" label="Phone" value="{!v.contact.Phone}" />
                 </div>
                 <!-- Modal Footer ( consists of cancel and save buttons ) -->
                 <footer class="slds-modal__footer">

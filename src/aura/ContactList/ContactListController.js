@@ -39,8 +39,26 @@
             btn.set('v.label','Save');
         }
         else if(name=='save') {
-            // Calling saveContacts if the button is save
-            helper.saveContacts(component, event, helper);
+            var contactLastNames = component.find("fieldToValidate");
+            var blank=0;
+            if(contactLastNames.length!=undefined) {
+                var allValid = component.find('fieldToValidate').reduce(function (validSoFar, inputCmp) {
+                inputCmp.showHelpMessageIfInvalid();
+                return validSoFar && inputCmp.get('v.validity').valid;
+                }, true);
+                if (!allValid) {
+                 blank++;
+                }
+            } else {
+                var allValid = component.find('fieldToValidate');
+                if (!allValid.get('v.validity').valid) {
+                    blank++;
+                }
+            }
+            if(blank==0) {
+                // Calling saveContacts if the button is save
+                helper.saveContacts(component, event, helper);                
+            }
         }
     },
     
@@ -69,5 +87,6 @@
     // Function used to create new contact
     createContact: function(component, event, helper) {
         helper.insertContact(component, event, helper);
-    }
+    },
+
 })
