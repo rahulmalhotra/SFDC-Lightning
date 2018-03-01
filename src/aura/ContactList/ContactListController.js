@@ -39,22 +39,32 @@
             btn.set('v.label','Save');
         }
         else if(name=='save') {
-            var contactLastNames = component.find("fieldToValidate");
+            // Getting the edit form fields to validate
+            var contactFields = component.find("fieldToValidate");
+            // Initialize the counter to zero - used to check validity of fields
             var blank=0;
-            if(contactLastNames.length!=undefined) {
+            // If there are more than 1 fields
+            if(contactFields.length!=undefined) {
+                // Iterating all the fields
                 var allValid = component.find('fieldToValidate').reduce(function (validSoFar, inputCmp) {
+                // Show help message if single field is invalid
                 inputCmp.showHelpMessageIfInvalid();
+                // return whether all fields are valid or not
                 return validSoFar && inputCmp.get('v.validity').valid;
                 }, true);
+                // If all fields are not valid increment the counter
                 if (!allValid) {
-                 blank++;
+                    blank++;
                 }
             } else {
+                // If there is only one field, get that field and check for validity (true/false)
                 var allValid = component.find('fieldToValidate');
+                // If field is not valid, increment the counter
                 if (!allValid.get('v.validity').valid) {
                     blank++;
                 }
             }
+            // Call the helper method only when counter is 0
             if(blank==0) {
                 // Calling saveContacts if the button is save
                 helper.saveContacts(component, event, helper);                
@@ -86,7 +96,37 @@
 
     // Function used to create new contact
     createContact: function(component, event, helper) {
-        helper.insertContact(component, event, helper);
+        var isContactValid = component.validateContact(component, event, helper);
+        if(isContactValid) {
+           helper.insertContact(component, event, helper);
+        }
     },
+
+    // Function to validate new contact - Aura method used for the same
+    validateContact: function(component, event, helper) {
+        // Getting all fields and iterate them to check for validity
+        var allValid = component.find('formFieldToValidate').reduce(function (validSoFar, inputCmp) {
+            // Show help message if single field is invalid
+            inputCmp.showHelpMessageIfInvalid();
+            // Get the name of each field
+            var name = inputCmp.get('v.name');
+            // Check if name is emailField
+            if(name=='emailField') {
+                // Getting the value of that field
+                var value = inputCmp.get('v.value');
+                // If value is not equal to rahul@gmail.com, add custom validation
+                if(value != 'rahul@gmail.com') {
+                    // Focus on that field to make custom validation work
+                    inputCmp.focus();
+                    // Setting the custom validation
+                    inputCmp.set('v.validity', {valid:false, badInput :true});
+                }                
+            }
+            // Returning the final result of validations
+            return validSoFar && inputCmp.get('v.validity').valid;
+        }, true);
+        // Returning Validate contact result in boolen
+        return allValid;
+    }
 
 })
