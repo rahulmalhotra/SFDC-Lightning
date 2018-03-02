@@ -46,7 +46,7 @@
             // If there are more than 1 fields
             if(contactFields.length!=undefined) {
                 // Iterating all the fields
-                var allValid = component.find('fieldToValidate').reduce(function (validSoFar, inputCmp) {
+                var allValid = contactFields.reduce(function (validSoFar, inputCmp) {
                 // Show help message if single field is invalid
                 inputCmp.showHelpMessageIfInvalid();
                 // return whether all fields are valid or not
@@ -58,7 +58,7 @@
                 }
             } else {
                 // If there is only one field, get that field and check for validity (true/false)
-                var allValid = component.find('fieldToValidate');
+                var allValid = contactFields;
                 // If field is not valid, increment the counter
                 if (!allValid.get('v.validity').valid) {
                     blank++;
