@@ -18,19 +18,19 @@ You can sign up for a developer org [here](https://developer.salesforce.com/sign
 You can clone this repository in your local system using the below command or directly download as zip file.
 
 ```
-git clone https://github.com/rahulmalhotra9620/SFDC-Lightning.git
+git clone https://github.com/rahulmalhotra/SFDC-Lightning.git
 ```
 
 ### Running the Code
 
 There are a total of 6 branches in this repository. As you follow the tutorial, you can switch to each branch in the following order :-
 
-1. [read](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/read)
-2. [update](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/update)
-3. [delete](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/delete)
-4. [create](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/create)
-5. [validate](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/validate)
-6. [master](https://github.com/rahulmalhotra9620/SFDC-Lightning/tree/master)
+1. [read](https://github.com/rahulmalhotra/SFDC-Lightning/tree/read)
+2. [update](https://github.com/rahulmalhotra/SFDC-Lightning/tree/update)
+3. [delete](https://github.com/rahulmalhotra/SFDC-Lightning/tree/delete)
+4. [create](https://github.com/rahulmalhotra/SFDC-Lightning/tree/create)
+5. [validate](https://github.com/rahulmalhotra/SFDC-Lightning/tree/validate)
+6. [master](https://github.com/rahulmalhotra/SFDC-Lightning/tree/master)
 
 You can switch to one branch to another using **git checkout** command.
 For example, you can switch to read branch using the following command:- 
@@ -63,7 +63,7 @@ https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/aura_
 
 Deploy whole code present in the master branch to your org by clicking the button below 
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=rahulmalhotra9620&repo=SFDC-Lightning&ref=master">
+<a href="https://githubsfdeploy.herokuapp.com?owner=rahulmalhotra&repo=SFDC-Lightning&ref=master">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
