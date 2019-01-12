@@ -9,9 +9,9 @@ public class JSONDemoController {
         // Making a new instance of wrapper class
 		ResponseJSONWrapper wrapper = new ResponseJSONWrapper();        
         // Getting the account list according to the account id
-		List<Account> accountList = [SELECT Name, Type, Industry, AnnualRevenue FROM Account WHERE Id=:accountId];
+		List<Account> accountList = [SELECT Name, Industry, AnnualRevenue FROM Account WHERE Id=:accountId];
         // Forming the account object and setting the wrapper fields
-        if(accountList.size()>0) {
+        if(accountList!=null && accountList.size()>0) {
 			Account accountObj = accountList.get(0);
             wrapper.id = accountObj.Id;
             wrapper.name = accountObj.Name;

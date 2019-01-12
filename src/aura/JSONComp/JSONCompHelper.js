@@ -15,17 +15,17 @@
             var state = response.getState();
             if(state === 'SUCCESS') {
                 // Parsing JSON string into js object
-                var response = JSON.parse(response.getReturnValue());
+                var responseObj = JSON.parse(response.getReturnValue());
                 // Forming the account object with the required data
                 var account = {
-                    name: response.name,
-                    industry: response.industry,
-                    annualRevenue: response.annualRevenue
+                    name: responseObj.name,
+                    industry: responseObj.industry,
+                    annualRevenue: responseObj.annualRevenue
                 };
                 // Setting the aura attributes with proper data
                 component.set('v.account', account);
-                component.set('v.contacts', response.contactList);
-                component.set('v.opportunities', response.opportunityList);
+                component.set('v.contacts', responseObj.contactList);
+                component.set('v.opportunities', responseObj.opportunityList);
             } else {
                 // Displaying the alert when call to apex was not successfull
                 alert('Unable to fetch data from server');
