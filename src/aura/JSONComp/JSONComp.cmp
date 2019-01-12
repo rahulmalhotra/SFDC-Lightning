@@ -1,0 +1,49 @@
+<aura:component controller="JSONDemoController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global">
+    <!-- Handler to call function when page is loaded initially -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <!-- Attribute to store account data -->
+    <aura:attribute name="account" type="Object" />
+    <!-- Attribute to store list of contacts -->
+    <aura:attribute name="contacts" type="List" />
+    <!-- Attribute to store list of opportunities -->
+    <aura:attribute name="opportunities" type="List" />
+    <!-- Applying slds to keep the data in center -->
+    <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-12"></div>
+        <div class="slds-col slds-size_10-of-12">
+            <!-- Displaying the account details using the account object -->
+            <br />
+            Account Details
+            <br /><br />
+            Name = {!v.account.name}
+            <br />
+            Industry = {!v.account.industry}
+            <br />
+            Annual Revenue = {!v.account.annualRevenue}
+            <br /><br />
+            <!-- Displaying the list of related contacts along with the details -->
+            Related Contacts
+            <aura:iteration items="{!v.contacts}" var="contact">
+                <br />
+                <br />
+                Contact Name = {!contact.Name}
+                <br />
+                Contact Phone = {!contact.Phone}
+                <br />
+                Contact Email = {!contact.Email}
+            </aura:iteration>
+            <br /><br />
+            <!-- Displaying the list of related opportunities along with the details -->
+            Related Opportunities
+            <aura:iteration items="{!v.opportunities}" var="opportunity">
+                <br /><br />
+                Opportunity Name = {!opportunity.Name}
+                <br />
+                Opportunity Amount = {!opportunity.Amount}
+                <br />
+                Opportunity Close Date = {!opportunity.CloseDate}
+            </aura:iteration>
+        </div>
+        <div class="slds-col slds-size_1-of-12"></div>
+    </div>
+</aura:component>
