@@ -26,7 +26,8 @@ public class JSONDemoController {
         wrapper.contactList = contactList;
         wrapper.opportunityList = opportunityList;
         // Converting the wrapper into JSON string and sending as a response 
-        return JSON.serialize(wrapper);
+        response = JSON.serialize(wrapper);
+        return response;
     }
     
     // Response JSON Wrapper Class
